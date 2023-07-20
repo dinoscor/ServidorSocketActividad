@@ -1,0 +1,10 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "parserOptions": { "ecmaVersion": 2018, "sourceType": "module" },
+  "rules": {
+    "quotes": ["error", "single"], // error en comillas dobles
+    "semi": ["error", "always"], // error si olvidamos ; al final
+    "max-len": ["error", 200] // máximo de 100 caracteres por línea. Podría haber más reglas (no premitir variables any...)
+  }
+}

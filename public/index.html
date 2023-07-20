@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor Node Express</title>
+</head>
+
+<body>
+    <h1>Servidor Node Express</h1>
+    <hr>
+    <p>Servidor en ejecución</p>
+    <hr>
+    <p id="bienvenida"></p>
+    <p id="infoNuevoUsuarioConectado"></p>
+
+    <!-- Para conectarnos a un servidor socket.io, la aplicación/web cliente debe importar
+    la librería cliente de socket.io. El siguiente script importa y carga al vuelo la librería-->
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"></script>
+    <script>
+
+        // Conexión con el socket server. io(url) nos conecta vía socket al servidor
+        const socket = io('http://localhost:3000');
+
+        // Escuchamos el evento mensaje-bienvenida del servidor. data será el mensaje con toda la información
+        socket.on('mensaje-bienvenida', (data) => {
+            document.querySelector('#bienvenida').textContent = data.msg;
+        });
+        // Escuchamos el evento usuario-conectado del servidor. data será el mensaje con toda la información
+        socket.on('usuario-conectado', (data) => {
+            document.querySelector('#infoNuevoUsuarioConectado').textContent = data.msg;
+        });
+    </script>
+</body>
+
+</html>
